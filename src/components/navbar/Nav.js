@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import {Link} from 'react-router-dom'
 
 const Nav = () => {
   let Links = [
-    { name: "Watch list movies", link: "/" },
-    { name: "Watched movies", link: "/" },
+    { name: "Watch list movies", link: "/watch-list-movies" },
+    { name: "Watched movies", link: "/watched-movies" },
   ];
   let [open, setOpen] = useState(false);
 
@@ -13,13 +14,15 @@ const Nav = () => {
 
   return (
     <div className=" shadow-md w-full fixed top-0 left-0">
-      <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
+      <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7 h-20">
+        <Link to="/watch-list-movies">
         <div className=" font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800">
           <span className="text-3xl text-indigo-600 mr-1 pt-2 mr-3">
             <ion-icon name="videocam-outline"></ion-icon>
           </span>
           WatchGuard
         </div>
+        </Link>
 
         <div
           onClick={toggleMenu}
@@ -35,24 +38,23 @@ const Nav = () => {
         >
           {Links.map((link) => (
             <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
-              <a
-                href={link.link}
-                className="text-gray-800 hover:text-gray-400 duration-500"
-              >
+             <Link to={link.link} className="text-gray-800 hover:text-gray-400 duration-500">
                 {link.name}
-              </a>
+              </Link>
             </li>
           ))}
+          <Link to="/add-movies">
           <button
             className="bg-indigo-600 text-white font-[Poppins] py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 
     duration-500"
           >
             Add movies
           </button>
+          </Link>
         </ul>
       </div>
     </div>
   );
 };
 
-export default Nav;
+export {Nav};
