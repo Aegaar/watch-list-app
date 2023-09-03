@@ -12,11 +12,17 @@ const Nav = () => {
     setOpen(!open);
   };
 
+  const clickHandler = () => {
+    if(open){
+      setOpen(!open);
+    }
+  }
+
   return (
     <div className=" shadow-md w-full fixed top-0 left-0">
       <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7 h-20">
         <Link to="/watch-list-movies">
-        <div className=" font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800">
+        <div className=" font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800" onClick={clickHandler}>
           <span className="text-3xl text-indigo-600 mr-1 pt-2 mr-3">
             <ion-icon name="videocam-outline"></ion-icon>
           </span>
@@ -31,7 +37,7 @@ const Nav = () => {
           <ion-icon name={open ? "close" : "menu"}></ion-icon>
         </div>
 
-        <ul
+        <ul onClick={clickHandler}
           className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
             open ? "top-20" : "top-[-490px]"
           }`}
