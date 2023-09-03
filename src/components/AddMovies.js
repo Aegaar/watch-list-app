@@ -1,17 +1,65 @@
-import { useState } from 'react';
+import React, { useState } from "react";
+import { CardMovie } from "./Card/CardMovie";
 
 const AddMovies = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [results, setResult] = useState([]);
 
+  const inputValueHandler = (event) => {
+    event.preventDefault();
 
+    setInputValue(event.target.value);
+
+    const url = `https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=${event.target.value}`;
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: process.env.REACT_APP_TMDB_API_KEY,
+      },
+    };
+
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.error) {
+          setResult(data.results);
+        } else {
+          setResult([""]);
+        }
+      });
+  };
 
   return (
-   <div className='pt-8 flex flex-col items-center justify-center'>
-    <label htmlFor="movieSearch" className='font-bold text-2xl text-gray-800' >
-      Search for movie
-    </label>
-    <input type="text" name="movieSearch" id="movieSearch" placeholder='Enter the name of the movie' className='border-2 rounded-md pl-2 mt-3 border-indigo-600 w-5/6 h-10 sm:w-4/6 lg:w-3/6 2xl:w-2/6'/>
-   </div>
-  )
-}
+    <div className="pt-8 flex flex-col items-center justify-center">
+      <label htmlFor="movieSearch" className="font-bold text-2xl text-gray-800">
+        Search for movie
+      </label>
+      <input
+        type="text"
+        name="movieSearch"
+        id="movieSearch"
+        value={inputValue}
+        onChange={inputValueHandler}
+        placeholder="Enter the name of the movie"
+        className="border-2 rounded-md pl-2 mt-3 border-indigo-600 w-5/6 h-10 sm:w-4/6 lg:w-3/6 2xl:w-2/6"
+      />
+      {results.length > 0 && (
+        <ul className="mt-8">
+          {console.log(results)}
+          {results.map((movie) => (
+          
+            <CardMovie key={movie.id} 
 
-export {AddMovies}
+            // movieID={movie.id} movieTitle={movie.title} 
+            // moviePoster={movie.poster_path}
+              movieInfo={movie}
+             />
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+
+export { AddMovies };
