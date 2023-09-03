@@ -1,8 +1,13 @@
+import Nav from "./components/navbar/Nav";
+
 function App() {
   return (
-    <h1>
-      Hello world dsadsa
-    </h1>
+    <>
+    <Nav/>
+    <main className="bg-indigo-600 w-full h-screen">
+      
+    </main>
+    </>
   );
 }
 
