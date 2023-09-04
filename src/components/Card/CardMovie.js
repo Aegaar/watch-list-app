@@ -1,7 +1,7 @@
 import noImageFound from "../../assets/noImageFound.jpg";
+import {Link} from 'react-router-dom'
 
 const CardMovie = ({ movieInfo, buttonsNames }) => {
-  // console.log(buttonsNames)
   const backgroundStyleHandler = {
     backgroundImage: movieInfo.poster_path
       ? `url(https://image.tmdb.org/t/p/original/${movieInfo.poster_path})`
@@ -25,23 +25,20 @@ const CardMovie = ({ movieInfo, buttonsNames }) => {
 
   const ButtonsRender = (buttonsNames) => {
     return buttonsNames.map((button) => (
+      <Link to={button.link ? `/${button.link}` : ""} key={button.name}>
       <button
-      className={`bg-indigo-600 text-white font-[Poppins] hover:bg-indigo-400 duration-500 mb-3 lg:mb-0 lg:mr-3 text-white font-bold py-2 px-4 rounded ${
-        button.type === "REMOVE" ? "bg-red-500 hover:bg-red-400" : "" 
-      }`}
-      key={button.name}
-      onClick={button.onClick}
-    >
+        className={`bg-indigo-600 text-white font-[Poppins] hover:bg-indigo-400 duration-500 mb-3 lg:mb-0 lg:mr-3 text-white font-bold py-2 px-4 rounded ${
+          button.type === "REMOVE" ? "bg-red-500 hover:bg-red-400" : ""
+        }`}
+        onClick={button.onClick}
+      >
         {button.name}
       </button>
+    </Link>
     ));
   }
 
   return (
-    // <li
-    //   key={movieInfo.id}
-    //   className="mt-10 border-2 border-indigo-600 rounded-md mr-7 ml-7"
-    // >
     <div className="max-w-sm w-full lg:max-w-full lg:flex">
       <div
         className="border-indigo-600 h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"

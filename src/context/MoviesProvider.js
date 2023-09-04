@@ -22,7 +22,7 @@ const moviesReducer = (state, action) => {
       }
       return state;
     case "ADD_TO_WATCHED":
-      if (!state.watchListMovies.find(movieObj => movieObj.id === action.movie.id)) {
+      if (!state.watchedMovies.find(movieObj => movieObj.id === action.movie.id)) {
         const updatedWatchedMovies = [...state.watchedMovies, action.movie];
         localStorage.setItem(
           "watchedMovies",
@@ -35,14 +35,26 @@ const moviesReducer = (state, action) => {
       }
       return state;
       case "REMOVE":
-        const updatedWatchListMoviesAfterRemove = state.watchListMovies.filter(
-          (movieObj) => movieObj.id !== action.movie.id
+        console.log("Removing movie:", action.movie);
+        const updatedWatchListMoviesAfterRemove = state.watchListMovies.slice();
+        const updatedWatchedMoviesAfterRemove = state.watchedMovies.slice();
+      
+        const indexToRemoveFromWatchList = updatedWatchListMoviesAfterRemove.findIndex(
+          (movieObj) => movieObj.id === action.movie.id
         );
-        const updatedWatchedMoviesAfterRemove = state.watchedMovies.filter(
-          (movieObj) => movieObj.id !== action.movie.id
+        const indexToRemoveFromWatched = updatedWatchedMoviesAfterRemove.findIndex(
+          (movieObj) => movieObj.id === action.movie.id
         );
       
-        // Aktualizuj local storage po usunięciu filmu
+        if (indexToRemoveFromWatchList !== -1) {
+          console.log("Removing from watchListMovies:", updatedWatchListMoviesAfterRemove[indexToRemoveFromWatchList]);
+          updatedWatchListMoviesAfterRemove.splice(indexToRemoveFromWatchList, 1);
+        }
+        if (indexToRemoveFromWatched !== -1) {
+          console.log("Removing from watchedMovies:", updatedWatchedMoviesAfterRemove[indexToRemoveFromWatched]);
+          updatedWatchedMoviesAfterRemove.splice(indexToRemoveFromWatched, 1);
+        }
+      
         localStorage.setItem(
           "watchListMovies",
           JSON.stringify(updatedWatchListMoviesAfterRemove)
@@ -51,6 +63,9 @@ const moviesReducer = (state, action) => {
           "watchedMovies",
           JSON.stringify(updatedWatchedMoviesAfterRemove)
         );
+      
+        console.log("Updated watchListMovies:", updatedWatchListMoviesAfterRemove);
+        console.log("Updated watchedMovies:", updatedWatchedMoviesAfterRemove);
       
         return {
           ...state,

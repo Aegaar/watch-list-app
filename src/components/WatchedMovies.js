@@ -4,19 +4,19 @@ import MoviesContext from "../context/movies-context";
 
 const WatchedMovies = () => {
   const movieCtx = useContext(MoviesContext);
-  const [results, setResults] = useState(movieCtx.watchListMovies);
+  const [results, setResults] = useState(movieCtx.watchedMovies);
 
   useEffect(() => {
-    // Aktualizuj results na podstawie zmian w kontekście
-    setResults(movieCtx.watchListMovies);
-  }, [movieCtx.watchListMovies]);
+    const watchedMovies = JSON.parse(localStorage.getItem("watchedMovies"));
+    setResults(watchedMovies);
+  }, [movieCtx.watchedMovies]);
 
   return (
     <div className="pt-8 flex flex-col items-center justify-center">
       <div htmlFor="movieSearch" className="font-bold text-2xl text-gray-800">
         Watched movies
       </div>
-      {results.length > 0 ? (
+      {Array.isArray(results) && results.length > 0 ? (
         <ul className="mt-8">
           {results.map((movie) => (
             <li
@@ -26,20 +26,21 @@ const WatchedMovies = () => {
               <CardMovie
                 movieInfo={movie}
                 buttonsNames={[
-                  {
-                    name: "Add to watched movies",
-                    type: "ADD",
-                    onClick: () => {
-                      console.log(movie.id);
-                      movieCtx.addMovieToWatchedMovies(movie);
-                    },
-                  },
+                  // {
+                  //   name: "Add to watched movies",
+                  //   type: "ADD",
+                  //   link: 'watched-movies',
+                  //   onClick: () => {
+                  //     console.log(movie.id);
+                  //     movieCtx.addMovieToWatchedMovies(movie);
+                  //   },
+                  // },
                   {
                     name: "Remove",
                     type: "REMOVE",
                     onClick: () => {
                       console.log(movie.id);
-                      movieCtx.removeMovie(movie);
+                      movieCtx.removeMovie(movie, 'watchedMovies');
                     },
                   },
                 ]}
@@ -48,7 +49,7 @@ const WatchedMovies = () => {
           ))}
         </ul>
       ) : (
-        <p>No movies watched by you</p>
+        <p className="pt-3 font-bold text-indigo-600">No movies watched by you</p>
       )}
     </div>
   );
