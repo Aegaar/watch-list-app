@@ -6,7 +6,6 @@ import { WatchListMovies } from "./components/WatchListMovies";
 import MoviesProvider from './context/MoviesProvider';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// TODO naprawic usuwanie, zmniejszyć kod naprawić button 
 
 function App() {
   return (
@@ -15,7 +14,7 @@ function App() {
        <Nav />
        <div className='mt-20'>
       <Routes>
-        <Route path="/" element={<WatchListMovies />} />
+        <Route path="/" element={<AddMovies />} />
         <Route path="/watch-list-movies" element={<WatchListMovies />} />
         <Route path="/watched-movies" element={<WatchedMovies />} />
         <Route path="/add-movies" element={<AddMovies />} />

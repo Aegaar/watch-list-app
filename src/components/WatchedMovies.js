@@ -40,7 +40,7 @@ const WatchedMovies = () => {
                     type: "REMOVE",
                     onClick: () => {
                       console.log(movie.id);
-                      movieCtx.removeMovie(movie, 'watchedMovies');
+                      movieCtx.removeMovie(movie);
                     },
                   },
                 ]}
