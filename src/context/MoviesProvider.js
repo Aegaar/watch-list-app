@@ -9,22 +9,50 @@ const defaultMovieState = {
 const moviesReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_WATCH_LIST":
-      return {
-        ...state,
-        watchListMovies: [...state.watchListMovies, action.movieID]
-      };
+      if (!state.watchListMovies.includes(action.id)) {
+        const updatedWatchListMovies = [...state.watchListMovies, action.id];
+        localStorage.setItem(
+          "watchListMovies",
+          JSON.stringify(updatedWatchListMovies)
+        );
+        return {
+          ...state,
+          watchListMovies: updatedWatchListMovies,
+        };
+      }
+      return state;
     case "ADD_TO_WATCHED":
-      return {
-        ...state,
-        watchedMovies: [...state.watchedMovies, action.id],
-      };
+      if (!state.watchedMovies.includes(action.id)) {
+        const updatedWatchedMovies = [...state.watchedMovies, action.id];
+        localStorage.setItem(
+          "watchedMovies",
+          JSON.stringify(updatedWatchedMovies)
+        );
+        return {
+          ...state,
+          watchedMovies: updatedWatchedMovies,
+        };
+      }
+      return state;
     case "REMOVE":
+      const updatedWatchListMovies = state.watchListMovies.filter(
+        (movie) => movie !== action.id
+      );
+      const updatedWatchedMovies = state.watchedMovies.filter(
+        (movieId) => movieId !== action.id
+      );
+    //   localStorage.setItem(
+    //     "watchListMovies",
+    //     JSON.stringify(updatedWatchListMovies)
+    //   );
+    //   localStorage.setItem(
+    //     "watchedMovies",
+    //     JSON.stringify(updatedWatchedMovies)
+    //   );
       return {
         ...state,
-        watchListMovies: state.watchListMovies.filter(
-          (movie) => movie.id !== action.id
-        ),
-        watchedMovies: state.watchedMovies.filter((movieId) => movieId !== action.id),
+        watchListMovies: updatedWatchListMovies,
+        watchedMovies: updatedWatchedMovies,
       };
     default:
       return state;
@@ -37,10 +65,11 @@ const MoviesProvider = (props) => {
     defaultMovieState
   );
 
-  console.log(moviesState);
+
+  // console.log(moviesState);
 
   const addMovieToWatchListMovies = (id) => {
-    dispatchMoviesAction({ type: "ADD_TO_WATCH_LIST", movieID: id });
+    dispatchMoviesAction({ type: "ADD_TO_WATCH_LIST", id: id });
   };
 
   const addMovieToWatchedMovies = (id) => {
@@ -67,4 +96,3 @@ const MoviesProvider = (props) => {
 };
 
 export default MoviesProvider;
-

@@ -6,7 +6,7 @@ import { useContext } from "react";
 const AddMovies = () => {
   const [inputValue, setInputValue] = useState("");
   const [results, setResult] = useState([]);
-  const movieCtx = useContext(MoviesContext)
+  const movieCtx = useContext(MoviesContext);
 
   const inputValueHandler = (event) => {
     event.preventDefault();
@@ -33,10 +33,6 @@ const AddMovies = () => {
       });
   };
 
-  // const handleButtonClick = () => {
-    
-  // }
-
   return (
     <div className="pt-8 flex flex-col items-center justify-center">
       <label htmlFor="movieSearch" className="font-bold text-2xl text-gray-800">
@@ -56,29 +52,30 @@ const AddMovies = () => {
           {/* {console.log(results)} */}
           {results.map((movie) => (
             <li
-            key={movie.id}
-            className="mt-10 border-2 border-indigo-600 rounded-md mr-7 ml-7"
-          >
-            <CardMovie
-              movieInfo={movie}
-              buttonsNames={[ {
-                name:'Add to watch list',
-                type: 'ADD',
-                onClick: () => {
-                  console.log(movie.id)
-                  movieCtx.addMovieToWatchListMovies(movie.id)
-              
-                }
-              },{
-                name:'Add to watched movies',
-                type: 'ADD',
-                onClick: () => {
-                  console.log(movie.id)
-                  movieCtx.addMovieToWatchedMovies(movie.id)
-              
-                }
-              }]}
-            />
+              key={movie.id}
+              className="mt-10 border-2 border-indigo-600 rounded-md mr-7 ml-7"
+            >
+              <CardMovie
+                movieInfo={movie}
+                buttonsNames={[
+                  {
+                    name: "Add to watch list",
+                    type: "ADD",
+                    onClick: () => {
+                      console.log(movie.id);
+                      movieCtx.addMovieToWatchListMovies(movie.id);
+                    },
+                  },
+                  {
+                    name: "Add to watched movies",
+                    type: "ADD",
+                    onClick: () => {
+                      console.log(movie.id);
+                      movieCtx.addMovieToWatchedMovies(movie.id);
+                    },
+                  },
+                ]}
+              />
             </li>
           ))}
         </ul>

@@ -60,7 +60,7 @@ const CardMovie = ({ movieInfo, buttonsNames }) => {
             <p className={`text-lg leading-none`}>
               Vote average{" "}
               <span className={voteClass}>
-                {movieInfo.vote_average.toFixed(1)}
+                {/* {movieInfo.vote_average.toFixed(1)} */}
               </span>
             </p>
             <p className="text-gray-600 mt-2">
