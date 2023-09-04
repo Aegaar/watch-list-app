@@ -48,13 +48,21 @@ const AddMovies = () => {
         <ul className="mt-8">
           {console.log(results)}
           {results.map((movie) => (
-          
-            <CardMovie key={movie.id} 
-
-            // movieID={movie.id} movieTitle={movie.title} 
-            // moviePoster={movie.poster_path}
+            <li
+            key={movie.id}
+            className="mt-10 border-2 border-indigo-600 rounded-md mr-7 ml-7"
+          >
+            <CardMovie
               movieInfo={movie}
-             />
+              buttonsNames={[ {
+                name:'Add to watch list',
+                type: 'ADD'
+              },{
+                name:'Add to watched movies',
+                type: 'ADD'
+              }]}
+            />
+            </li>
           ))}
         </ul>
       )}
