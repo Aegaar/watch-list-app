@@ -19,7 +19,7 @@ const CardMovie = ({ movieInfo }) => {
     voteClass = "text-yellow-500";
   } else if (movieInfo.vote_average > 5) {
     voteClass = "text-orange-500";
-  } else if (movieInfo.vote_average < 5 && movieInfo.vote_average !== 0) {
+  } else if (movieInfo.vote_average < 5 && movieInfo.vote_average === 0) {
     voteClass = "text-red-500";
   }
 
@@ -30,11 +30,11 @@ const CardMovie = ({ movieInfo }) => {
     >
       <div className="max-w-sm w-full lg:max-w-full lg:flex">
         <div
-          className="border-r-2 border-indigo-600 h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+          className="border-indigo-600 h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
           style={backgroundStyleHandler}
           title="Movie poster"
         ></div>
-        <div className="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div className="bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal flex-grow">
           <div className="mb-8">
             <div className={`font-bold text-xl mb-2 text-indigo-600`}>
               {movieInfo.title}
@@ -45,11 +45,31 @@ const CardMovie = ({ movieInfo }) => {
             <div className="text-sm">
               <p className={`text-lg leading-none`}>
                 Vote average{" "}
-                <span className={voteClass}>{movieInfo.vote_average.toFixed(1)}</span>
+                <span className={voteClass}>
+                  {movieInfo.vote_average.toFixed(1)}
+                </span>
               </p>
               <p className="text-gray-600 mt-2">
                 Release date {movieInfo.release_date}
               </p>
+            </div>
+          </div>
+          <div className="mt-4 lg:mt-5 text-center lg:text-left">
+            <div className="lg:flex lg:space-x-3">
+              <div>
+                <button
+                  className="bg-indigo-600 text-white font-[Poppins] hover:bg-indigo-400 duration-500 mb-3 lg:mb-0 lg:mr-3 text-white font-bold py-2 px-4 rounded"
+                >
+                  Add to watch list
+                </button>
+              </div>
+              <div>
+                <button
+                  className="bg-indigo-600 text-white font-[Poppins] hover:bg-indigo-400 duration-500 mb-3 lg:mb-0 lg:mr-3 text-white font-bold py-2 px-4 rounded"
+                >
+                  Add to watch list
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -59,3 +79,5 @@ const CardMovie = ({ movieInfo }) => {
 };
 
 export { CardMovie };
+
+
