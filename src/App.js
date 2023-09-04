@@ -3,11 +3,13 @@ import { Nav } from "./components/navbar/Nav";
 import { AddMovies } from "./components/AddMovies";
 import { WatchedMovies } from "./components/WatchedMovies";
 import { WatchListMovies } from "./components/WatchListMovies";
+import MoviesProvider from './context/MoviesProvider';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
+    <MoviesProvider>
     <Router>
        <Nav />
        <div className='mt-20'>
@@ -19,6 +21,7 @@ function App() {
       </Routes>
       </div>
     </Router>
+    </MoviesProvider>
   );
 }
 

@@ -1,8 +1,7 @@
-import React from "react";
 import noImageFound from "../../assets/noImageFound.jpg";
 
 const CardMovie = ({ movieInfo, buttonsNames }) => {
-  console.log(buttonsNames)
+  // console.log(buttonsNames)
   const backgroundStyleHandler = {
     backgroundImage: movieInfo.poster_path
       ? `url(https://image.tmdb.org/t/p/original/${movieInfo.poster_path})`
@@ -31,6 +30,7 @@ const CardMovie = ({ movieInfo, buttonsNames }) => {
         button.type === "REMOVE" ? "bg-red-500 hover:bg-red-400" : "" 
       }`}
       key={button.name}
+      onClick={button.onClick}
     >
         {button.name}
       </button>
@@ -72,14 +72,6 @@ const CardMovie = ({ movieInfo, buttonsNames }) => {
           <div className="lg:flex lg:space-x-3">
             <div>
             {ButtonsRender(buttonsNames)}
-              {/* <button className=" bg-indigo-600 text-white font-[Poppins] hover:bg-indigo-400 duration-500 mb-3 lg:mb-0 lg:mr-3 text-white font-bold py-2 px-4 rounded">
-                Add to watch list
-              </button>
-            </div>
-            <div>
-              <button className=" bg-gray-800 text-white font-[Poppins] hover:bg-gray-600 duration-500 mb-3 lg:mb-0 lg:mr-3 text-white font-bold py-2 px-4 rounded">
-                Add to watched movies
-              </button> */}
             </div>
           </div>
         </div>

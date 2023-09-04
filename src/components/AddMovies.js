@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { CardMovie } from "./Card/CardMovie";
+import MoviesContext from "../context/movies-context";
+import { useContext } from "react";
 
 const AddMovies = () => {
   const [inputValue, setInputValue] = useState("");
   const [results, setResult] = useState([]);
+  const movieCtx = useContext(MoviesContext)
 
   const inputValueHandler = (event) => {
     event.preventDefault();
@@ -30,6 +33,10 @@ const AddMovies = () => {
       });
   };
 
+  // const handleButtonClick = () => {
+    
+  // }
+
   return (
     <div className="pt-8 flex flex-col items-center justify-center">
       <label htmlFor="movieSearch" className="font-bold text-2xl text-gray-800">
@@ -46,7 +53,7 @@ const AddMovies = () => {
       />
       {results.length > 0 && (
         <ul className="mt-8">
-          {console.log(results)}
+          {/* {console.log(results)} */}
           {results.map((movie) => (
             <li
             key={movie.id}
@@ -56,10 +63,20 @@ const AddMovies = () => {
               movieInfo={movie}
               buttonsNames={[ {
                 name:'Add to watch list',
-                type: 'ADD'
+                type: 'ADD',
+                onClick: () => {
+                  console.log(movie.id)
+                  movieCtx.addMovieToWatchListMovies(movie.id)
+              
+                }
               },{
                 name:'Add to watched movies',
-                type: 'ADD'
+                type: 'ADD',
+                onClick: () => {
+                  console.log(movie.id)
+                  movieCtx.addMovieToWatchedMovies(movie.id)
+              
+                }
               }]}
             />
             </li>
