@@ -9,7 +9,7 @@ const WatchListMovies = () => {
   useEffect(() => {
     const watchListMovies = JSON.parse(localStorage.getItem("watchListMovies"));
     setResults(watchListMovies);
-  }, [movieCtx.watchListMovies]); 
+  }, [movieCtx.watchListMovies]);
 
   return (
     <div className="pt-8 flex flex-col items-center justify-center">
@@ -29,7 +29,7 @@ const WatchListMovies = () => {
                   {
                     name: "Add to watched movies",
                     type: "ADD",
-                    link: 'watched-movies',
+                    link: "watched-movies",
                     onClick: () => {
                       console.log(movie.id);
                       movieCtx.addMovieToWatchedMovies(movie);
@@ -49,16 +49,12 @@ const WatchListMovies = () => {
           ))}
         </ul>
       ) : (
-        <p className="pt-3 font-bold text-indigo-600">No movies in your watchlist. You can add movies.</p>
+        <p className="pt-3 font-bold text-indigo-600">
+          No movies in your watchlist. You can add movies.
+        </p>
       )}
     </div>
   );
 };
 
 export { WatchListMovies };
-
-
-
-
-
-

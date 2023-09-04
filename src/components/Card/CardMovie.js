@@ -1,5 +1,5 @@
 import noImageFound from "../../assets/noImageFound.jpg";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const CardMovie = ({ movieInfo, buttonsNames }) => {
   const backgroundStyleHandler = {
@@ -26,17 +26,17 @@ const CardMovie = ({ movieInfo, buttonsNames }) => {
   const ButtonsRender = (buttonsNames) => {
     return buttonsNames.map((button) => (
       <Link to={button.link ? `/${button.link}` : ""} key={button.name}>
-      <button
-        className={`bg-indigo-600 text-white font-[Poppins] hover:bg-indigo-400 duration-500 mb-3 lg:mb-0 lg:mr-3 text-white font-bold py-2 px-4 rounded ${
-          button.type === "REMOVE" ? "bg-red-500 hover:bg-red-400" : ""
-        }`}
-        onClick={button.onClick}
-      >
-        {button.name}
-      </button>
-    </Link>
+        <button
+          className={`bg-indigo-600 text-white font-[Poppins] hover:bg-indigo-400 duration-500 mb-3 lg:mb-0 mr-3 text-white font-bold py-2 px-4 rounded ${
+            button.type === "REMOVE" ? "bg-red-500 hover:bg-red-400" : ""
+          }`}
+          onClick={button.onClick}
+        >
+          {button.name}
+        </button>
+      </Link>
     ));
-  }
+  };
 
   return (
     <div className="max-w-sm w-full lg:max-w-full lg:flex">
@@ -67,14 +67,11 @@ const CardMovie = ({ movieInfo, buttonsNames }) => {
         </div>
         <div className="mt-4 lg:mt-5 text-center lg:text-left">
           <div className="lg:flex lg:space-x-3">
-            <div>
-            {ButtonsRender(buttonsNames)}
-            </div>
+            <div>{ButtonsRender(buttonsNames)}</div>
           </div>
         </div>
       </div>
     </div>
-    // </li>
   );
 };
 

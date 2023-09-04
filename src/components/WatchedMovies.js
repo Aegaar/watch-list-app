@@ -26,15 +26,6 @@ const WatchedMovies = () => {
               <CardMovie
                 movieInfo={movie}
                 buttonsNames={[
-                  // {
-                  //   name: "Add to watched movies",
-                  //   type: "ADD",
-                  //   link: 'watched-movies',
-                  //   onClick: () => {
-                  //     console.log(movie.id);
-                  //     movieCtx.addMovieToWatchedMovies(movie);
-                  //   },
-                  // },
                   {
                     name: "Remove",
                     type: "REMOVE",
@@ -49,10 +40,12 @@ const WatchedMovies = () => {
           ))}
         </ul>
       ) : (
-        <p className="pt-3 font-bold text-indigo-600">No movies watched by you</p>
+        <p className="pt-3 font-bold text-indigo-600">
+          No movies watched by you
+        </p>
       )}
     </div>
   );
-}
+};
 
-export {WatchedMovies}
+export { WatchedMovies };
