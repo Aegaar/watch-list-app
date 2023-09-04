@@ -7,6 +7,8 @@ import MoviesProvider from './context/MoviesProvider';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+// TODO naprawic usuwanie, zmniejszyć kod naprawić button 
+
 function App() {
   return (
     <MoviesProvider>

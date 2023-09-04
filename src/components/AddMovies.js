@@ -63,7 +63,7 @@ const AddMovies = () => {
                     type: "ADD",
                     onClick: () => {
                       console.log(movie.id);
-                      movieCtx.addMovieToWatchListMovies(movie.id);
+                      movieCtx.addMovieToWatchListMovies(movie);
                     },
                   },
                   {
@@ -71,7 +71,7 @@ const AddMovies = () => {
                     type: "ADD",
                     onClick: () => {
                       console.log(movie.id);
-                      movieCtx.addMovieToWatchedMovies(movie.id);
+                      movieCtx.addMovieToWatchedMovies(movie);
                     },
                   },
                 ]}

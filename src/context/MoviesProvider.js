@@ -9,8 +9,8 @@ const defaultMovieState = {
 const moviesReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_WATCH_LIST":
-      if (!state.watchListMovies.includes(action.id)) {
-        const updatedWatchListMovies = [...state.watchListMovies, action.id];
+      if (!state.watchListMovies.find(movieObj => movieObj.id === action.movie.id)) {
+        const updatedWatchListMovies = [...state.watchListMovies, action.movie];
         localStorage.setItem(
           "watchListMovies",
           JSON.stringify(updatedWatchListMovies)
@@ -22,8 +22,8 @@ const moviesReducer = (state, action) => {
       }
       return state;
     case "ADD_TO_WATCHED":
-      if (!state.watchedMovies.includes(action.id)) {
-        const updatedWatchedMovies = [...state.watchedMovies, action.id];
+      if (!state.watchListMovies.find(movieObj => movieObj.id === action.movie.id)) {
+        const updatedWatchedMovies = [...state.watchedMovies, action.movie];
         localStorage.setItem(
           "watchedMovies",
           JSON.stringify(updatedWatchedMovies)
@@ -34,26 +34,29 @@ const moviesReducer = (state, action) => {
         };
       }
       return state;
-    case "REMOVE":
-      const updatedWatchListMovies = state.watchListMovies.filter(
-        (movie) => movie !== action.id
-      );
-      const updatedWatchedMovies = state.watchedMovies.filter(
-        (movieId) => movieId !== action.id
-      );
-    //   localStorage.setItem(
-    //     "watchListMovies",
-    //     JSON.stringify(updatedWatchListMovies)
-    //   );
-    //   localStorage.setItem(
-    //     "watchedMovies",
-    //     JSON.stringify(updatedWatchedMovies)
-    //   );
-      return {
-        ...state,
-        watchListMovies: updatedWatchListMovies,
-        watchedMovies: updatedWatchedMovies,
-      };
+      case "REMOVE":
+        const updatedWatchListMoviesAfterRemove = state.watchListMovies.filter(
+          (movieObj) => movieObj.id !== action.movie.id
+        );
+        const updatedWatchedMoviesAfterRemove = state.watchedMovies.filter(
+          (movieObj) => movieObj.id !== action.movie.id
+        );
+      
+        // Aktualizuj local storage po usunięciu filmu
+        localStorage.setItem(
+          "watchListMovies",
+          JSON.stringify(updatedWatchListMoviesAfterRemove)
+        );
+        localStorage.setItem(
+          "watchedMovies",
+          JSON.stringify(updatedWatchedMoviesAfterRemove)
+        );
+      
+        return {
+          ...state,
+          watchListMovies: updatedWatchListMoviesAfterRemove,
+          watchedMovies: updatedWatchedMoviesAfterRemove,
+        };
     default:
       return state;
   }
@@ -66,18 +69,16 @@ const MoviesProvider = (props) => {
   );
 
 
-  // console.log(moviesState);
-
-  const addMovieToWatchListMovies = (id) => {
-    dispatchMoviesAction({ type: "ADD_TO_WATCH_LIST", id: id });
+  const addMovieToWatchListMovies = (movie) => {
+    dispatchMoviesAction({ type: "ADD_TO_WATCH_LIST", movie: movie });
   };
 
-  const addMovieToWatchedMovies = (id) => {
-    dispatchMoviesAction({ type: "ADD_TO_WATCHED", id: id });
+  const addMovieToWatchedMovies = (movie) => {
+    dispatchMoviesAction({ type: "ADD_TO_WATCHED", movie: movie });
   };
 
-  const removeMovie = (id) => {
-    dispatchMoviesAction({ type: "REMOVE", id: id });
+  const removeMovie = (movie) => {
+    dispatchMoviesAction({ type: "REMOVE", movie: movie });
   };
 
   const moviesContext = {
