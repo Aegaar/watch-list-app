@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# WatchGuard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+WatchGuard is a web application that allows users to keep track of movies they want to watch and those they have already watched. It's built using React, React Router for navigation, and the Tailwind CSS framework for styling. The application utilizes The Movie Database (TMDB) API to fetch movie data.
 
-In the project directory, you can run:
+![search](https://github.com/Aegaar/watch-list-app/assets/117531984/56a29a7a-a80b-4a9c-b907-19ac152b1c3c)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Home Page**: Users can browse movies from the TMDB database, complete with thumbnails, titles, and brief descriptions.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Bookmarking**: Users can add movies to their "To Watch" or "Watched" lists.
 
-### `npm test`
+- **Bookmarks Management**: Users can view and manage their movie bookmarks, removing movies from their lists or changing them from the To Watch list to the Watched list.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **User Movies**: Added movies are saved to the local search memory
 
-### `npm run build`
+## Technologies Used
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React**
+- **React Router**
+- **Tailwind CSS**
+- **TMDB API**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
 
-### `npm run eject`
+    ```bash
+    git clone https://github.com/Aegaar/watch-list-app
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Navigate to the project directory:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+    cd watch-list-app
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Install dependencies:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    ```bash
+    npm install
 
-## Learn More
+4. Create a `.env` file with your TMDB API key:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```bash
+    REACT_APP_TMDB_API_KEY=Bearer [your api key]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. Start the application:
 
-### Code Splitting
+    ```bash
+    npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## System Requirements
 
-### Analyzing the Bundle Size
+- Node.js with npm or Yarn package manager installed.
+- To get a TMDB API key, you must create a TMDB account [here](https://www.themoviedb.org/signup?language=pl).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Obtaining a TMDB API Key
 
-### Making a Progressive Web App
+1. After creating an account, go to [TMDB API Settings](https://www.themoviedb.org/settings/api).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. Click on "Generate a new API key."
 
-### Advanced Configuration
+3. Fill out the required form.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+4. After submitting the form, your API key will be displayed at the bottom of the page.
+  
+## Screenshots
 
-### Deployment
+1. Mobile 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![mobileadd](https://github.com/Aegaar/watch-list-app/assets/117531984/f6080179-1cfa-4dba-b603-91f5835ee65b)
 
-### `npm run build` fails to minify
+2. Watch List Movies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![watchListMovies](https://github.com/Aegaar/watch-list-app/assets/117531984/59d4beec-9f47-4914-a48f-e2b94ced63e4)
+
+3. Watchd Movies
+
+![watchedMovies](https://github.com/Aegaar/watch-list-app/assets/117531984/6f76f182-4c3f-47d8-99ba-ae12bad3753b)
+
+4. Add Movie
+
+![search](https://github.com/Aegaar/watch-list-app/assets/117531984/56a29a7a-a80b-4a9c-b907-19ac152b1c3c)
+
+
+
+
+
