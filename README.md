@@ -3,7 +3,7 @@
 
 WatchGuard is a web application that allows users to keep track of movies they want to watch and those they have already watched. It's built using React, React Router for navigation, and the Tailwind CSS framework for styling. The application utilizes The Movie Database (TMDB) API to fetch movie data.
 
-![search](https://github.com/Aegaar/watch-list-app/assets/117531984/56a29a7a-a80b-4a9c-b907-19ac152b1c3c)
+![search](https://github.com/Aegaar/watch-list-app/assets/117531984/3142a263-6680-4ce2-94df-240f97cb3bd8)
 
 ## Features
 
@@ -68,19 +68,19 @@ WatchGuard is a web application that allows users to keep track of movies they w
 
 1. Mobile 
 
-![mobileadd](https://github.com/Aegaar/watch-list-app/assets/117531984/f6080179-1cfa-4dba-b603-91f5835ee65b)
+![mobileadd](https://github.com/Aegaar/watch-list-app/assets/117531984/71668f5b-32fd-4fee-984d-6bfcb2f3a4c2)
 
 2. Watch List Movies
 
-![watchListMovies](https://github.com/Aegaar/watch-list-app/assets/117531984/59d4beec-9f47-4914-a48f-e2b94ced63e4)
+![watchListMovies](https://github.com/Aegaar/watch-list-app/assets/117531984/13806cd0-5cd9-4a60-a9f4-494c301fb71e)
 
-3. Watchd Movies
+3. Watched Movies
 
-![watchedMovies](https://github.com/Aegaar/watch-list-app/assets/117531984/6f76f182-4c3f-47d8-99ba-ae12bad3753b)
+![watchedMovies](https://github.com/Aegaar/watch-list-app/assets/117531984/0f4a1968-9734-480e-bd96-8b3772b2138f)
 
 4. Add Movie
 
-![search](https://github.com/Aegaar/watch-list-app/assets/117531984/56a29a7a-a80b-4a9c-b907-19ac152b1c3c)
+![mobileadd](https://github.com/Aegaar/watch-list-app/assets/117531984/71668f5b-32fd-4fee-984d-6bfcb2f3a4c2)
 
 
 
