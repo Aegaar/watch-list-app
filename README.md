@@ -80,7 +80,7 @@ WatchGuard is a web application that allows users to keep track of movies they w
 
 4. Add Movie
 
-![mobileadd](https://github.com/Aegaar/watch-list-app/assets/117531984/71668f5b-32fd-4fee-984d-6bfcb2f3a4c2)
+![search](https://github.com/Aegaar/watch-list-app/assets/117531984/3142a263-6680-4ce2-94df-240f97cb3bd8)
 
 
 
