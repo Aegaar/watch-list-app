@@ -24,7 +24,6 @@ const moviesReducer = (state, action) => {
           JSON.stringify(updatedWatchListMovies)
         );
 
-        // Usuń film z listy 'watchedMovies', jeśli istnieje
         const updatedWatchedMovies = removeFromArray(
           state.watchedMovies,
           action.movie
@@ -52,7 +51,6 @@ const moviesReducer = (state, action) => {
           JSON.stringify(updatedWatchedMovies)
         );
 
-        // Usuń film z listy 'watchListMovies', jeśli istnieje
         const updatedWatchListMovies = removeFromArray(
           state.watchListMovies,
           action.movie

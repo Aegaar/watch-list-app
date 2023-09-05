@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { CardMovie } from "./Card/CardMovie";
-import MoviesContext from "../context/movies-context";
+import { CardMovie } from "../Card/CardMovie";
+import MoviesContext from "../../context/movies-context";
 import { useContext } from "react";
 
 const AddMovies = () => {
@@ -49,7 +49,6 @@ const AddMovies = () => {
       />
       {results.length > 0 && (
         <ul className="mt-8">
-          {/* {console.log(results)} */}
           {results.map((movie) => (
             <li
               key={movie.id}
@@ -62,7 +61,6 @@ const AddMovies = () => {
                     name: "Add to watch list",
                     type: "ADD",
                     onClick: () => {
-                      console.log(movie.id);
                       movieCtx.addMovieToWatchListMovies(movie);
                     },
                   },
@@ -70,7 +68,6 @@ const AddMovies = () => {
                     name: "Add to watched movies",
                     type: "ADD",
                     onClick: () => {
-                      console.log(movie.id);
                       movieCtx.addMovieToWatchedMovies(movie);
                     },
                   },

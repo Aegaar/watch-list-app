@@ -1,20 +1,20 @@
-import React, { useState, useEffect, useContext } from "react";
-import { CardMovie } from "./Card/CardMovie";
-import MoviesContext from "../context/movies-context";
+import React, { useEffect, useContext, useState } from "react";
+import { CardMovie } from "../Card/CardMovie";
+import MoviesContext from "../../context/movies-context";
 
-const WatchedMovies = () => {
+const WatchListMovies = () => {
   const movieCtx = useContext(MoviesContext);
-  const [results, setResults] = useState(movieCtx.watchedMovies);
+  const [results, setResults] = useState(movieCtx.watchListMovies);
 
   useEffect(() => {
-    const watchedMovies = JSON.parse(localStorage.getItem("watchedMovies"));
-    setResults(watchedMovies);
-  }, [movieCtx.watchedMovies]);
+    const watchListMovies = JSON.parse(localStorage.getItem("watchListMovies"));
+    setResults(watchListMovies);
+  }, [movieCtx.watchListMovies]);
 
   return (
     <div className="pt-8 flex flex-col items-center justify-center">
       <div htmlFor="movieSearch" className="font-bold text-2xl text-gray-800">
-        Watched movies
+        Watch list movies
       </div>
       {Array.isArray(results) && results.length > 0 ? (
         <ul className="mt-8">
@@ -27,10 +27,17 @@ const WatchedMovies = () => {
                 movieInfo={movie}
                 buttonsNames={[
                   {
+                    name: "Add to watched movies",
+                    type: "ADD",
+                    link: "watched-movies",
+                    onClick: () => {
+                      movieCtx.addMovieToWatchedMovies(movie);
+                    },
+                  },
+                  {
                     name: "Remove",
                     type: "REMOVE",
                     onClick: () => {
-                      console.log(movie.id);
                       movieCtx.removeMovie(movie);
                     },
                   },
@@ -41,11 +48,11 @@ const WatchedMovies = () => {
         </ul>
       ) : (
         <p className="pt-3 font-bold text-indigo-600">
-          No movies watched by you
+          No movies in your watchlist. You can add movies.
         </p>
       )}
     </div>
   );
 };
 
-export { WatchedMovies };
+export { WatchListMovies };
