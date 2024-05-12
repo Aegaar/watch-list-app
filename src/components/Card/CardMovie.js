@@ -27,7 +27,7 @@ const CardMovie = ({ movieInfo, buttonsNames }) => {
     return buttonsNames.map((button) => (
       <Link to={button.link ? `/${button.link}` : ""} key={button.name}>
         <button
-          className={`bg-indigo-600 text-white font-[Poppins] hover:bg-indigo-400 duration-500 mb-3 lg:mb-0 mr-3 text-white font-bold py-2 px-4 rounded ${
+          className={`bg-indigo-600 text-white font-[Poppins] hover:bg-indigo-400 duration-500 mb-3 lg:mb-0 mr-3  font-bold py-2 px-4 rounded ${
             button.type === "REMOVE" ? "bg-red-500 hover:bg-red-400" : ""
           }`}
           onClick={button.onClick}

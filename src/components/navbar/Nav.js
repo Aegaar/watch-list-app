@@ -26,7 +26,7 @@ const Nav = () => {
             className=" font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800"
             onClick={clickHandler}
           >
-            <span className="text-3xl text-indigo-600 mr-1 pt-2 mr-3">
+            <span className="text-3xl text-indigo-600 pt-2 mr-3">
               <ion-icon name="videocam-outline"></ion-icon>
             </span>
             WatchGuard
@@ -58,8 +58,8 @@ const Nav = () => {
           ))}
           <Link to="/add-movies">
             <button
-              className="bg-indigo-600 text-white font-[Poppins] py-2 px-6 rounded md:ml-8 hover:bg-indigo-400 
-    duration-500"
+              className="bg-indigo-600 text-white font-[Poppins] py-2 px-6 rounded md:ml-8 hover:bg-indigo-400
+              duration-500"
             >
               Add movies
             </button>
