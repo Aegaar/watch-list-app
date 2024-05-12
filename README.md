@@ -3,6 +3,8 @@
 
 WatchGuard is a web application that allows users to keep track of movies they want to watch and those they have already watched. It's built using React, React Router for navigation, and the Tailwind CSS framework for styling. The application utilizes The Movie Database (TMDB) API to fetch movie data.
 
+<p align="center"> <a href="https://finance-tracker-bay.vercel.app">View Demo</a></p>
+
 ![search](https://github.com/Aegaar/watch-list-app/assets/117531984/3142a263-6680-4ce2-94df-240f97cb3bd8)
 
 ## Features
@@ -64,7 +66,7 @@ WatchGuard is a web application that allows users to keep track of movies they w
 
 4. After submitting the form, your API key will be displayed at the bottom of the page.
   
-## Screenshots
+## Usage
 
 1. Mobile 
 
